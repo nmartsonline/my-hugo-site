@@ -1,0 +1,20 @@
+<section class="hero" id="home">
+    <div class="hero-slider">
+        {{ range $index, $slide := .Site.Params.heroSlides }}
+        <div class="slide{{ if eq $index 0 }} active{{ end }}" style="background: {{ $slide.gradient }};"></div>
+        {{ end }}
+    </div>
+    
+    <div class="slider-dots">
+        {{ range $index, $slide := .Site.Params.heroSlides }}
+        <span class="dot{{ if eq $index 0 }} active{{ end }}" onclick="currentSlide({{ add $index 1 }})"></span>
+        {{ end }}
+    </div>
+
+    <div class="container hero-content">
+        <h1>{{ .Params.heroTitle | default "Welcome to ChatterChirps Literary World" }}</h1>
+        <p>{{ .Params.heroSubtitle | default .Site.Params.description }}</p>
+        <a href="#books" class="cta-button">Explore My Books</a>
+        <a href="#newsletter" class="cta-button cta-secondary">Join Newsletter</a>
+    </div>
+</section>

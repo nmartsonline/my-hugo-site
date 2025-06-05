@@ -3,36 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ .Title }} | {{ .Site.Title }}</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
-    <style>
-        nav { margin: 2rem 0; padding: 1rem 0; border-bottom: 1px solid #ccc; }
-        nav a { margin-right: 1rem; }
-        footer { margin-top: 3rem; padding: 2rem 0; border-top: 1px solid #ccc; text-align: center; }
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 2rem; }
-        .product-card { border: 1px solid #ddd; padding: 1rem; border-radius: 8px; }
-        .product-image { width: 100%; height: 200px; object-fit: cover; }
-        .price { font-size: 1.5rem; font-weight: bold; color: #0066cc; }
-        .pagination { margin: 2rem 0; text-align: center; }
-        .pagination a { margin: 0 0.5rem; }
-    </style>
+    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+    <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+    <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
 </head>
 <body>
-    <header>
-        <h1><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
-        <nav>
-            <a href="{{ .Site.BaseURL }}">Home</a>
-            <a href="{{ .Site.BaseURL }}blog/">Blog</a>
-            <a href="{{ .Site.BaseURL }}product/">Products</a>
-        </nav>
-    </header>
+    {{ partial "header.html" . }}
     
     <main>
         {{ block "main" . }}{{ end }}
     </main>
     
-    <footer>
-        <p>&copy; {{ now.Year }} {{ .Site.Params.author }}. Built with Hugo.</p>
-    </footer>
+    {{ partial "footer.html" . }}
+    
+    <div class="notification" id="notification">Item added to cart!</div>
+    
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+    
+    <script src="{{ "js/main.js" | relURL }}"></script>
 </body>
 </html>

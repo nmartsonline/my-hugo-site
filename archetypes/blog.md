@@ -3,5 +3,6 @@ title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
 draft: false
 description: ""
-tags: []
+category: "Writing Tips"
+image: ""
 ---

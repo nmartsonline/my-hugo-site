@@ -1,0 +1,13 @@
+# Hugo default public folder
+public/
+resources/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo

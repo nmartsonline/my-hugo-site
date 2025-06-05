@@ -1,0 +1,90 @@
+{{ define "main" }}
+    {{ partial "hero.html" . }}
+    {{ partial "social-proof.html" . }}
+    
+    <!-- Books Section -->
+    <section id="books">
+        <div class="container">
+            <h2 class="section-title">My Books</h2>
+            <div class="books-grid">
+                {{ range first 6 (where .Site.RegularPages "Section" "product") }}
+                <div class="book-card">
+                    {{ if .Params.bestseller }}
+                    <div class="bestseller-badge">Bestseller</div>
+                    {{ end }}
+                    <div class="book-cover">{{ .Title }}</div>
+                    <h3 class="book-title">{{ .Title }}</h3>
+                    <p>{{ .Params.description }}</p>
+                    <div class="book-price">${{ .Params.price }}</div>
+                    <a href="{{ .Params.amazon_link }}" target="_blank" class="buy-button">Buy on Amazon</a>
+                    <button class="buy-button preview-button" onclick="showPreview('{{ .Title }}')">Preview</button>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </section>
+    
+    {{ partial "newsletter.html" . }}
+    
+    <!-- Free Downloads Section -->
+    <section id="freebies">
+        <div class="container">
+            <h2 class="section-title">Free Downloads</h2>
+            <div class="freebie-grid">
+                {{ range where .Site.RegularPages "Section" "freebie" }}
+                <div class="freebie-card">
+                    <h3>{{ .Title }}</h3>
+                    <p>{{ .Params.description }}</p>
+                    <a href="{{ .Params.downloadLink }}" class="download-button" onclick="downloadFile('{{ .Title }}')">Download {{ .Params.fileType }}</a>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </section>
+    
+    {{ partial "testimonials.html" . }}
+    
+    <!-- Blog Section -->
+    <section id="blog">
+        <div class="container">
+            <h2 class="section-title">Latest from My Blog</h2>
+            <div class="blog-grid">
+                {{ range first 3 (where .Site.RegularPages "Section" "blog") }}
+                <div class="blog-card">
+                    <div class="blog-image">{{ .Params.category | default "Blog Post" }}</div>
+                    <div class="blog-content">
+                        <p class="blog-date">{{ .Date.Format "January 2, 2006" }}</p>
+                        <h3 class="blog-title">{{ .Title }}</h3>
+                        <p>{{ .Params.description }}</p>
+                        <a href="{{ .Permalink }}" class="read-more">Read More →</a>
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </section>
+    
+    <!-- Events Section -->
+    <section id="events">
+        <div class="container">
+            <h2 class="section-title">Upcoming Events</h2>
+            <div class="events-list">
+                {{ range where .Site.RegularPages "Section" "event" }}
+                <div class="event-card">
+                    <div class="event-date">
+                        <div class="event-day">{{ .Params.eventDay }}</div>
+                        <div class="event-month">{{ .Params.eventMonth }}</div>
+                    </div>
+                    <div class="event-details">
+                        <h4>{{ .Title }}</h4>
+                        <p class="event-location">{{ if eq .Params.locationType "online" }}🌐{{ else }}📍{{ end }} {{ .Params.location }}</p>
+                        <p>{{ .Params.description }}</p>
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </section>
+    
+    {{ partial "about.html" . }}
+{{ end }}

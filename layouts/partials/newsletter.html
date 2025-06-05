@@ -1,0 +1,12 @@
+<section id="newsletter">
+    <div class="container">
+        <div class="newsletter">
+            <h3>{{ .Site.Params.newsletterHeading }}</h3>
+            <p>{{ .Site.Params.newsletterText }}</p>
+            <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+                <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+                <button type="submit" class="newsletter-button">Subscribe Now</button>
+            </form>
+        </div>
+    </div>
+</section>

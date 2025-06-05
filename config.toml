@@ -1,7 +1,56 @@
-baseURL = "https://chatterchirps.com/"
-title = "Modular Hugo Netlify Site"
-theme = "ananke"
-paginate = 5
+baseURL = "https://localhost-1313.netlify.app/"
+title = "ChatterChirps - Author"
+theme = ""
+[pagination]
+  pagerSize = 6
 
 [params]
-  author = "Neha Moghe Roy"
+  author = "ChatterChirps"
+  description = "Bestselling author of captivating stories that touch the heart and inspire the soul"
+  logo = "ChatterChirps"
+  
+  # Hero Slider Colors
+  [[params.heroSlides]]
+    gradient = "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+  [[params.heroSlides]]
+    gradient = "linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%)"
+  [[params.heroSlides]]
+    gradient = "linear-gradient(135deg, #00d2d3 0%, #54a0ff 100%)"
+  [[params.heroSlides]]
+    gradient = "linear-gradient(135deg, #ff9ff3 0%, #f368e0 100%)"
+  [[params.heroSlides]]
+    gradient = "linear-gradient(135deg, #feca57 0%, #ff9ff3 100%)"
+  
+  # Newsletter
+  newsletterHeading = "Stay Connected"
+  newsletterText = "Get exclusive updates, free chapters, and writing tips delivered to your inbox!"
+
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/#home"
+    weight = 1
+  [[menu.main]]
+    name = "Books"
+    url = "/#books"
+    weight = 2
+  [[menu.main]]
+    name = "Free Downloads"
+    url = "/#freebies"
+    weight = 3
+  [[menu.main]]
+    name = "Blog"
+    url = "/#blog"
+    weight = 4
+  [[menu.main]]
+    name = "Events"
+    url = "/#events"
+    weight = 5
+  [[menu.main]]
+    name = "About"
+    url = "/#about"
+    weight = 6
+  [[menu.main]]
+    name = "Contact"
+    url = "/#contact"
+    weight = 7

@@ -1,0 +1,14 @@
+<section id="testimonials">
+    <div class="container">
+        <h2 class="section-title">What Readers Say</h2>
+        <div class="testimonials-grid">
+            {{ range where .Site.RegularPages "Section" "testimonial" }}
+            <div class="testimonial-card">
+                <div class="star-rating">{{ range seq .Params.rating }}⭐{{ end }}</div>
+                <p class="testimonial-quote">"{{ .Params.quote }}"</p>
+                <p class="testimonial-author">- {{ .Params.author }}, {{ .Params.source }}</p>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</section>
