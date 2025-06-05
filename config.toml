@@ -1,0 +1,7 @@
+baseURL = "https://chatterchirps.com/"
+title = "Modular Hugo Netlify Site"
+theme = "ananke"
+paginate = 5
+
+[params]
+  author = "Neha Moghe Roy"

@@ -1,0 +1,30 @@
+{{ define "main" }}
+<h2>Blog</h2>
+
+{{ range (.Paginate .Pages 5).Pages }}
+<article style="margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid #eee;">
+    <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+    <time>{{ .Date.Format "January 2, 2006" }}</time>
+    {{ if .Params.description }}
+    <p>{{ .Params.description }}</p>
+    {{ end }}
+    {{ if .Params.tags }}
+    <p>Tags: {{ range .Params.tags }}<span style="background: #f0f0f0; padding: 0.2rem 0.5rem; margin-right: 0.5rem; border-radius: 3px;">{{ . }}</span>{{ end }}</p>
+    {{ end }}
+</article>
+{{ end }}
+
+{{ if gt .Paginator.TotalPages 1 }}
+<div class="pagination">
+    {{ if .Paginator.HasPrev }}
+    <a href="{{ .Paginator.Prev.URL }}">← Previous</a>
+    {{ end }}
+    
+    <span>Page {{ .Paginator.PageNumber }} of {{ .Paginator.TotalPages }}</span>
+    
+    {{ if .Paginator.HasNext }}
+    <a href="{{ .Paginator.Next.URL }}">Next →</a>
+    {{ end }}
+</div>
+{{ end }}
+{{ end }}

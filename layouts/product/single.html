@@ -1,0 +1,43 @@
+{{ define "main" }}
+<article>
+    <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; margin-bottom: 2rem;">
+        <div>
+            {{ if .Params.image }}
+            <img src="{{ .Params.image }}" alt="{{ .Title }}" style="width: 100%; height: auto; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            {{ end }}
+        </div>
+        <div>
+            <h2>{{ .Title }}</h2>
+            
+            {{ if .Params.author }}
+            <p style="font-size: 1.2rem; color: #666;">by {{ .Params.author }}</p>
+            {{ end }}
+            
+            {{ if .Params.price }}
+            <p class="price">${{ .Params.price }}</p>
+            {{ end }}
+            
+            {{ if .Params.isbn }}
+            <p><strong>ISBN:</strong> {{ .Params.isbn }}</p>
+            {{ end }}
+            
+            {{ if .Params.pages }}
+            <p><strong>Pages:</strong> {{ .Params.pages }}</p>
+            {{ end }}
+            
+            {{ if .Params.amazon_link }}
+            <p style="margin-top: 2rem;">
+                <a href="{{ .Params.amazon_link }}" target="_blank" rel="noopener noreferrer" style="background: #FF9900; color: black; padding: 1rem 2rem; text-decoration: none; border-radius: 4px; display: inline-block; font-weight: bold;">Buy on Amazon</a>
+            </p>
+            {{ end }}
+        </div>
+    </div>
+    
+    <div style="margin-top: 3rem;">
+        {{ .Content }}
+    </div>
+    
+    <hr style="margin: 3rem 0;">
+    <p><a href="{{ .Site.BaseURL }}product/">← Back to Books</a></p>
+</article>
+{{ end }}

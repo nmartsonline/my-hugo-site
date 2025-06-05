@@ -1,0 +1,24 @@
+{{ define "main" }}
+<h2>Books</h2>
+
+<div class="product-grid">
+{{ range .Pages }}
+    <div class="product-card">
+        {{ if .Params.image }}
+        <img src="{{ .Params.image }}" alt="{{ .Title }}" class="product-image">
+        {{ end }}
+        <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+        {{ if .Params.author }}
+        <p style="color: #666;">by {{ .Params.author }}</p>
+        {{ end }}
+        {{ if .Params.price }}
+        <p class="price">${{ .Params.price }}</p>
+        {{ end }}
+        {{ if .Params.description }}
+        <p>{{ .Params.description }}</p>
+        {{ end }}
+        <p><a href="{{ .Permalink }}">View Details →</a></p>
+    </div>
+{{ end }}
+</div>
+{{ end }}
